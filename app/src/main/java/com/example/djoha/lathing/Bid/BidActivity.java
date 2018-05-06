@@ -49,18 +49,18 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = database.child("lelang");
 
-        DatabaseReference lelang = ref.child("1");
-        lelang.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+//        DatabaseReference lelang = ref.child("1");
+//        lelang.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
         bid_btn_bid = findViewById(R.id.bid_btn_bid);
         bid_btn_bid.setOnClickListener(new View.OnClickListener() {
