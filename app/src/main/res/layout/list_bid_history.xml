@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:padding="5dp"
+    android:background="@drawable/garis_bawah">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="19/05/2018 09.00"
+        android:id="@+id/bidHistory_tv_tanggal"
+        android:layout_marginBottom="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_below="@+id/bidHistory_tv_tanggal"
+        android:id="@+id/bidHistory_lin1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Firmanda N."
+            android:textSize="16dp"
+            android:layout_weight="2"
+            android:id="@+id/bidHistory_tv_nama"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrowup"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp. 100.000"
+            android:textSize="16dp"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:id="@+id/bidHistory_tv_nominal"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

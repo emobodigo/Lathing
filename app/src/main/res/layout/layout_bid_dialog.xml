@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/bid_dialog_tv_highestPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Highest Bid : Rp.200.000"
+        android:textColor="@color/red"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/bid_dialog_et_bidPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bid_dialog_tv_highestPrice"
+        android:gravity="center"
+        android:hint="Your Bid Price"
+        android:inputType="number"
+        android:textSize="20dp" />
+
+</RelativeLayout>

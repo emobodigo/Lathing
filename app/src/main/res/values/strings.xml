@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lathing</string>
+    <string name="signout">Sign Out</string>
+    <string name="editprofile">Edit Profile</string>
+    <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Fusce ultricies ipsum eget neque efficitur, eu ullamcorper urna tempor.
+        Nullam tempus eget erat at dapibus. Morbi laoreet turpis eget nisl maximus auctor.
+        Aliquam porta ornare urna eu mattis. Duis et aliquet est. Nullam posuere sollicitudin sodales.
+        Lorem ipsum dolor sit amet, consectetur elit.</string>
+</resources>

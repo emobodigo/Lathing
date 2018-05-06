@@ -1,0 +1,245 @@
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/white"
+             android:padding="20dp">
+
+             <de.hdodenhof.circleimageview.CircleImageView
+                 android:layout_width="120dp"
+                 android:layout_height="120dp"
+                 android:id="@+id/profilephoto"
+                 android:layout_marginTop="20dp"
+                 app:civ_border_color="@color/black"
+                 app:civ_border_width="20dp"
+                 android:layout_centerHorizontal="true"/>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/changephototext"
+                 android:text="Change Photo"
+                 android:layout_marginTop="10sp"
+                 android:layout_below="@+id/profilephoto"
+                 android:textSize="20sp"
+                 android:textColor="@color/colorPrimary"
+                 android:layout_centerHorizontal="true"/>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/changephototext"
+                 android:layout_marginTop="50dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel1">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_name"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/username"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="textNoSuggestions"
+                     android:hint="Username"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/rel1"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel2">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_displayname"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/displayname"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:hint="Display Name"
+                     android:inputType="textNoSuggestions"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/rel2"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel3">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_birthday"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/birthday"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="date"
+                     android:hint="Date of Birth"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@id/rel3"
+                 android:text="Password Setting"
+                 android:textSize="25sp"
+                 android:layout_marginTop="25dp"
+                 android:textColor="@color/black"
+                 android:layout_centerHorizontal="true"
+                 android:background="@drawable/garis_bawah"
+                 android:id="@+id/tv1"/>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/tv1"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel5">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_password"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/password"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="textPassword"
+                     android:hint="Password"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/rel5"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel6">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_passwordre"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/passwordre"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="textPassword"
+                     android:hint="Retype Password"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@id/rel6"
+                 android:text="Contact Setting"
+                 android:textSize="25sp"
+                 android:layout_marginTop="25dp"
+                 android:textColor="@color/black"
+                 android:layout_centerHorizontal="true"
+                 android:background="@drawable/garis_bawah"
+                 android:id="@+id/tv2"/>
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/tv2"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel7">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_phone"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/phone"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="phone"
+                     android:hint="Phone Number"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+                 android:layout_below="@id/rel7"
+                 android:layout_marginTop="15dp"
+                 android:background="@drawable/garis_abu"
+                 android:id="@+id/rel4">
+
+                 <ImageView
+                     android:layout_width="35dp"
+                     android:layout_height="35dp"
+                     android:layout_centerVertical="true"
+                     android:src="@drawable/ic_email"/>
+
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/email"
+                     android:layout_centerVertical="true"
+                     android:layout_marginStart="40dp"
+                     android:layout_marginEnd="1dp"
+                     android:background="@null"
+                     android:inputType="textEmailAddress"
+                     android:hint="Email"
+                     tools:ignore="RtlCompat" />
+             </RelativeLayout>
+
+         </RelativeLayout>
+    </ScrollView>
+</merge>

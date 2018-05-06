@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1034970494303",
+    "firebase_url": "https://bidme-6294f.firebaseio.com",
+    "project_id": "bidme-6294f",
+    "storage_bucket": "bidme-6294f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034970494303:android:3fcb47499e70e9fa",
+        "android_client_info": {
+          "package_name": "com.example.djoha.lathing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034970494303-jcj57poqe5efe7db2938a6lj763fvitf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.djoha.lathing",
+            "certificate_hash": "8e700a5c097e3a7e54ce8a4236ae1c1d8f231aa4"
+          }
+        },
+        {
+          "client_id": "1034970494303-9s3ujlamku1o4i4arqqd3i1qiemqt31m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL_7bGa-Vf7NXjDkhPSWVRo14wMehMtmg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034970494303-9s3ujlamku1o4i4arqqd3i1qiemqt31m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
