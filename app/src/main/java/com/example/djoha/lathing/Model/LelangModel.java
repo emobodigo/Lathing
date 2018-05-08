@@ -9,9 +9,10 @@ public class LelangModel {
     private String gambar;
     private String deskripsi;
     private String harga_awal;
+    private String harga_akhir;
 
 
-    public LelangModel(String nama_barang, String akhir_bid, String awal_bid, String id_pelelang, String gambar, String deskripsi, String harga_awal) {
+    public LelangModel(String nama_barang, String akhir_bid, String awal_bid, String id_pelelang, String gambar, String deskripsi, String harga_awal, String harga_akhir) {
         this.nama_barang = nama_barang;
         this.akhir_bid = akhir_bid;
         this.awal_bid = awal_bid;
@@ -19,6 +20,24 @@ public class LelangModel {
         this.gambar = gambar;
         this.deskripsi = deskripsi;
         this.harga_awal = harga_awal;
+        this.harga_akhir = harga_akhir;
+
+    }
+
+    public String getAwal_bid() {
+        return awal_bid;
+    }
+
+    public void setAwal_bid(String awal_bid) {
+        this.awal_bid = awal_bid;
+    }
+
+    public String getHarga_akhir() {
+        return harga_akhir;
+    }
+
+    public void setHarga_akhir(String harga_akhir) {
+        this.harga_akhir = harga_akhir;
     }
 
     public String getNama_barang() {

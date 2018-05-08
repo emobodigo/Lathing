@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         initImageLoader();
 //        NavigationView();
         SetupViewPager();
+      //  mAuth.signOut();
     }
 
     /* -----------firebase--------------*/
@@ -86,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void SetupViewPager(){
         SectionPagerAdapter adapter = new SectionPagerAdapter(getSupportFragmentManager());
-        adapter.addFragmen(new AddProdukFragment());
         adapter.addFragmen(new HomeFragment());
         adapter.addFragmen(new NotifFragment());
+        adapter.addFragmen(new ProfileFragment());
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
 
