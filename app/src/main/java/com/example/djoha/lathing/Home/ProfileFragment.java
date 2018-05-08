@@ -53,7 +53,6 @@ public class ProfileFragment extends Fragment {
     ProfileAdapter profileAdapter;
     LelangModel lelangModel;
     List<LelangModel> listLelang = new ArrayList<>();
-    FirebaseRecyclerAdapter adapter;
     final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
     @Nullable
@@ -97,8 +96,9 @@ public class ProfileFragment extends Fragment {
                         String deskripsi = ds.child("deskripsi").getValue().toString();
                         String harga_awal = ds.child("harga_awal").getValue().toString();
                         String harga_akhir = ds.child("harga_akhir").getValue().toString();
+                        String nama_pelelang = ds.child("nama_pelelang").getValue().toString();
 
-                        listLelang.add(new LelangModel(nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir));
+                        listLelang.add(new LelangModel(nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir, nama_pelelang));
                     }
                 }
 

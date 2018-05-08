@@ -104,37 +104,42 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
         });
 
         //ngambil data history bid
-        DatabaseReference bid = lelang.child("bid");
-        bid.orderByChild("jumlah_bid").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        try{
+            DatabaseReference bid = lelang.child("bid");
+            bid.orderByChild("jumlah_bid").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                bidModelList.clear();
+                    bidModelList.clear();
 
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    String id_bid = ds.getKey();
-                    int jumlah_bid = Integer.parseInt(ds.child("jumlah_bid").getValue().toString());
-                    String waktu_bid = ds.child("waktu_bid").getValue().toString();
-                    String nama_penawar = ds.child("nama_penawar").getValue().toString();
-                    bidModelList.add(new BidModel(id_bid, nama_penawar, waktu_bid, jumlah_bid));
+                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                        String id_bid = ds.getKey();
+                        int jumlah_bid = Integer.parseInt(ds.child("jumlah_bid").getValue().toString());
+                        String waktu_bid = ds.child("waktu_bid").getValue().toString();
+                        String nama_penawar = ds.child("nama_penawar").getValue().toString();
+                        bidModelList.add(new BidModel(id_bid, nama_penawar, waktu_bid, jumlah_bid));
+                    }
+
+                    adapter = new BidHistoryAdapter(bidModelList, BidActivity.this);
+                    recyclerView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    hp = bidModelList.get(bidModelList.size()-1).getJumlah_bid();
+                    tv_highprice.setText(hp+"");
+                    if(bidDialog != null){
+                        bidDialog.update_price(hp+"");
+                    }
+
                 }
 
-                adapter = new BidHistoryAdapter(bidModelList, BidActivity.this);
-                recyclerView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-                hp = bidModelList.get(bidModelList.size()-1).getJumlah_bid();
-                tv_highprice.setText(hp+"");
-                if(bidDialog != null){
-                    bidDialog.update_price(hp+"");
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
                 }
+            });
+        }catch (NullPointerException e){
+            Toast.makeText(this, "Data bid masih kosong", Toast.LENGTH_SHORT).show();
+        }
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         //btn bid dipencet
         bid_btn_bid = findViewById(R.id.bid_btn_bid);

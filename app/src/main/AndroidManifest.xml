@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.djoha.lathing">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,12 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Auth.LoginActivity"></activity>
-        <activity android:name=".Feed.FeedActivity"></activity>
-        <activity android:name=".Profil.ProfileActivity"></activity>
-        <activity android:name=".Profil.SettingActivity"></activity>
-        <activity android:name=".Auth.SignUpActivity"></activity>
-        <activity android:name=".Bid.BidActivity"></activity>
+        <activity android:name=".Auth.LoginActivity" />
+        <activity android:name=".Feed.FeedActivity" />
+        <activity android:name=".Profil.ProfileActivity" />
+        <activity android:name=".Profil.SettingActivity" />
+        <activity android:name=".Auth.SignUpActivity" />
+        <activity android:name=".Bid.BidActivity" />
+        <activity android:name=".Home.TambahLelangActivity"></activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/picker_provider_paths" />
+        </provider>
     </application>
 
 </manifest>
