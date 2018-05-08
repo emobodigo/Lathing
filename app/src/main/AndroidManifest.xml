@@ -11,17 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Bid.BidActivity">
+        <activity android:name=".Home.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Auth.LoginActivity"></activity>
         <activity android:name=".Feed.FeedActivity"></activity>
         <activity android:name=".Profil.ProfileActivity"></activity>
         <activity android:name=".Profil.SettingActivity"></activity>
-        <!--<activity android:name=".Bid.BidActivity"></activity>-->
+        <activity android:name=".Auth.SignUpActivity"></activity>
+        <activity android:name=".Bid.BidActivity"></activity>
     </application>
 
 </manifest>

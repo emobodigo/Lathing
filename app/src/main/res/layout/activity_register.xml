@@ -36,8 +36,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="5dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,19 +48,32 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="5dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="date"
-                android:hint="Tanggal Lahir"
-                android:id="@+id/inputdobdaftar"/>
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:id="@+id/inputemail"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Alamat"
+                android:id="@+id/inputalamat"/>
 
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="5dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,12 +85,11 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="5dp">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:hint="Password"
                 android:id="@+id/inputpasswordDaftar"/>
 
@@ -88,11 +99,11 @@
         <android.support.v7.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginTop="15dp"
             android:text="Daftar"
             android:textColor="@color/black"
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_daftar"
             android:padding="12dp"
             android:background="@drawable/round_button"/>
 
@@ -104,7 +115,7 @@
             android:textColor="@color/colorPrimary"
             android:gravity="center"
             android:textSize="16dp"
-            android:id="@+id/signuptext"/>
+            android:id="@+id/logintext"/>
 
     </LinearLayout>
 
@@ -112,6 +123,6 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
-        android:id="@+id/progressbarlogin"/>
+        android:id="@+id/progressbarregister"/>
 
 </RelativeLayout>

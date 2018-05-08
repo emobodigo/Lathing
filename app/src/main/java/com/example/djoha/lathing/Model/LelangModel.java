@@ -2,11 +2,19 @@ package com.example.djoha.lathing.Model;
 
 public class LelangModel {
 
-    private String nama_barang, akhir_bid, id_pelelang, gambar, deskripsi, harga_awal;
+    private String nama_barang;
+    private String akhir_bid;
+    private String awal_bid;
+    private String id_pelelang;
+    private String gambar;
+    private String deskripsi;
+    private String harga_awal;
 
-    public LelangModel(String nama_barang, String akhir_bid, String id_pelelang, String gambar, String deskripsi, String harga_awal) {
+
+    public LelangModel(String nama_barang, String akhir_bid, String awal_bid, String id_pelelang, String gambar, String deskripsi, String harga_awal) {
         this.nama_barang = nama_barang;
         this.akhir_bid = akhir_bid;
+        this.awal_bid = awal_bid;
         this.id_pelelang = id_pelelang;
         this.gambar = gambar;
         this.deskripsi = deskripsi;

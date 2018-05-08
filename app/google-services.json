@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1034970494303-cqen2ckmh3r9r3jv7kq5doenkar7mio1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.djoha.lathing",
+            "certificate_hash": "281bf09e9526f009c2fcc5a58e720c5a1a5cfb90"
+          }
+        },
+        {
           "client_id": "1034970494303-jcj57poqe5efe7db2938a6lj763fvitf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
