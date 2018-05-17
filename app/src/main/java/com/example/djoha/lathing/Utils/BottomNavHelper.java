@@ -7,9 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
-import com.example.djoha.lathing.Feed.FeedActivity;
+
 import com.example.djoha.lathing.Home.MainActivity;
-import com.example.djoha.lathing.Profil.ProfileActivity;
 import com.example.djoha.lathing.R;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -33,14 +32,14 @@ public class BottomNavHelper {
                         ((Activity)context).finish();
                         break;
                     case R.id.ic_feed:
-                        Intent intent1 = new Intent(context, FeedActivity.class);
-                        context.startActivity(intent1);
-                        ((Activity)context).finish();
+//                        Intent intent1 = new Intent(context, FeedActivity.class);
+//                        context.startActivity(intent1);
+//                        ((Activity)context).finish();
                         break;
                     case R.id.ic_profil:
-                        Intent intent2 = new Intent(context, ProfileActivity.class);
-                        context.startActivity(intent2);
-                        ((Activity)context).finish();
+//                        Intent intent2 = new Intent(context, ProfileActivity.class);
+//                        context.startActivity(intent2);
+//                        ((Activity)context).finish();
                         break;
                 }
                 return false;

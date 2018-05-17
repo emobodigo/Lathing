@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/garis_abu"
+
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relative1"
+        android:background="@drawable/garis_bawah">
+
+
+        <TextView
+            android:id="@+id/username_lelang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="Username"
+            android:layout_centerVertical="true"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="8dp"
+
+            />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/image1"
+
+        android:layout_width="match_parent"
+        android:layout_height="290dp"
+        android:layout_below="@+id/relative1"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/lelang1" />
+
+    <TextView
+        android:id="@+id/itemname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:text="Item Name"
+        android:layout_below="@id/image1"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Description"
+        android:layout_below="@id/itemname"
+        />
+
+    <TextView
+        android:id="@+id/bidawal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:text="bid awal"
+        android:layout_below="@id/image1"
+
+        />
+
+
+    <TextView
+        android:id="@+id/biddate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:text="bid date"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        />
+
+    <Button
+        android:id="@+id/button_bid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/biddate"
+        android:layout_marginRight="16dp"
+        android:text="Bid"
+        android:textSize="16sp"
+        android:background="@drawable/round_button"/>
+
+</RelativeLayout>

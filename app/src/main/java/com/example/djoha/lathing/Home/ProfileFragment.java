@@ -67,6 +67,8 @@ public class ProfileFragment extends Fragment {
         cimg = (ImageView)view.findViewById(R.id.fotoprofil);
         alamat = (TextView)view.findViewById(R.id.alamat);
 
+        post.setVisibility(View.INVISIBLE);
+
         rvprofile = (RecyclerView)view.findViewById(R.id.recyclerpost);
         rvprofile.setHasFixedSize(true);
         rvprofile.setLayoutManager(new LinearLayoutManager(mContext));
@@ -88,6 +90,8 @@ public class ProfileFragment extends Fragment {
 
                     Log.d("asooy", "onDataChange: "+ds.getKey());
                     if(mAuth.getCurrentUser().getUid().equals(ds.child("id_pelelang").getValue().toString())){
+
+                        String key = ds.getKey();
                         String nama_barang = ds.child("nama_barang").getValue().toString();
                         String akhir_bid = ds.child("akhir_bid").getValue().toString();
                         String awal_bid = ds.child("awal_bid").getValue().toString();
@@ -98,7 +102,8 @@ public class ProfileFragment extends Fragment {
                         String harga_akhir = ds.child("harga_akhir").getValue().toString();
                         String nama_pelelang = ds.child("nama_pelelang").getValue().toString();
 
-                        listLelang.add(new LelangModel(nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir, nama_pelelang));
+                        listLelang.add(new LelangModel(key, nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir, nama_pelelang));
+
                     }
                 }
 

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.djoha.lathing.Bid.BidActivity;
 import com.example.djoha.lathing.Model.LelangModel;
 import com.example.djoha.lathing.R;
 import com.example.djoha.lathing.Utils.HomeAdapter;
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment {
     private MethodFirebase methodFirebase;
     RecyclerView rvhome;
     ImageView cimg, postimg;
-    TextView namabarang,hargaawal,deskripsi,username,bid_tanggal;
+
     //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -57,7 +58,10 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment_layout, container, false);
          rvhome = (RecyclerView)view.findViewById(R.id.recyclerhome);
          rvhome.setHasFixedSize(true);
-         rvhome.setLayoutManager(new LinearLayoutManager(mContext));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        rvhome.setLayoutManager(layoutManager);
 
          postimg = view.findViewById(R.id.bidbutton);
          postimg.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +103,7 @@ public class HomeFragment extends Fragment {
 
                     Log.d("asooy", "onDataChange: "+ds.getKey());
 
+                        String key = ds.getKey();
                         String nama_barang = ds.child("nama_barang").getValue().toString();
                         String akhir_bid = ds.child("akhir_bid").getValue().toString();
                         String awal_bid = ds.child("awal_bid").getValue().toString();
@@ -108,8 +113,7 @@ public class HomeFragment extends Fragment {
                         String harga_awal = ds.child("harga_awal").getValue().toString();
                         String harga_akhir = ds.child("harga_akhir").getValue().toString();
                         String nama_pelelang = ds.child("nama_pelelang").getValue().toString();
-
-                        listLelang.add(new LelangModel(nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir, nama_pelelang));
+                        listLelang.add(new LelangModel(key, nama_barang,  akhir_bid,  awal_bid,  id_pelelang,  gambar,  deskripsi,  harga_awal,  harga_akhir, nama_pelelang));
 
                 }
 
@@ -126,6 +130,7 @@ public class HomeFragment extends Fragment {
         });
         return view;
     }
+
     private void setupFirebaseAuth(){
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
@@ -155,6 +160,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
     @Override
     public void onStart() {
         super.onStart();

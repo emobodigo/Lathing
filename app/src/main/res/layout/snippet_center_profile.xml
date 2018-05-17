@@ -1,0 +1,119 @@
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:layout_marginBottom="50dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@id/rel1">
+
+                <include layout="@layout/top_profile_toolbar"/>
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rel1"
+                >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100"
+                android:id="@+id/lin1"
+                android:background="@drawable/garis_abu">
+                
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="25"
+                    android:layout_marginStart="25dp"
+                    android:id="@+id/rel2"
+                    android:layout_marginLeft="25dp">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/fotoprofil"
+                        android:layout_marginTop="20dp"
+                        app:civ_border_width="20dp"
+                        app:civ_border_color="@color/black"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="75"
+                    android:id="@+id/rel3">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Djohansyah Putra"
+                        android:textSize="18sp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/tvnama"
+                        android:layout_marginTop="8dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvnama"
+                        android:id="@+id/tvkontak"
+                        android:textSize="14sp"
+                        android:text="+6282365355209"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/colorPrimary"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/alamat"
+                        android:layout_below="@+id/tvkontak"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="16dp"
+                        android:textSize="14sp"
+                        android:text="Jln Sigura-gura"
+                        android:textColor="@color/black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/alamat"
+                        android:id="@+id/tvpost"
+                        android:text="17"
+                        android:textSize="16sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_horizontal"/>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/lin1"
+                    android:id="@+id/rel4"
+                    >
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/recyclerpost"
+                        android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+</merge>

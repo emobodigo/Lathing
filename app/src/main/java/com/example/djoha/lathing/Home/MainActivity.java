@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-
     }
 
     @Override
@@ -88,17 +87,16 @@ public class MainActivity extends AppCompatActivity {
     private void SetupViewPager(){
         SectionPagerAdapter adapter = new SectionPagerAdapter(getSupportFragmentManager());
         adapter.addFragmen(new HomeFragment());
-        adapter.addFragmen(new NotifFragment());
+       // adapter.addFragmen(new NotifFragment());
         adapter.addFragmen(new ProfileFragment());
-        ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
+        ViewPager viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_add);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_lelang);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_notif);
+        tabLayout.getTabAt(0).setIcon(R.drawable.ic_rumah);
+        tabLayout.getTabAt(1).setIcon(R.drawable.ic_profilee);
     }
 
     private void NavigationView(){

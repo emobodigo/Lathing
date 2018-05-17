@@ -65,6 +65,7 @@ public class TambahLelangActivity extends AppCompatActivity implements IPickResu
                 nama_pelelang = extras.getString("nama_pelelang");
             }
         }
+
         btn_ambil_gambar = findViewById(R.id.btn_ambil_gambar);
         btn_post = findViewById(R.id.btn_post);
 

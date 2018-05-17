@@ -1,4 +1,4 @@
-package com.example.djoha.lathing.Bid;
+package com.example.djoha.lathing.Utils;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

@@ -12,16 +12,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.djoha.lathing.Model.BidModel;
-import com.example.djoha.lathing.Model.LelangModel;
 import com.example.djoha.lathing.R;
-import com.google.firebase.database.ChildEventListener;
+import com.example.djoha.lathing.Utils.BidHistoryAdapter;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -38,24 +41,28 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
     private BidHistoryAdapter adapter;
     final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-//    LelangModel lelangModel;
+    //    LelangModel lelangModel;
     BidDialog bidDialog;
     List<BidModel> bidModelList = new ArrayList<>();
     List<BidModel> bidModelListReverse = new ArrayList<>();
 
     //dummy
-    String id_penawar1 = "3";
-    String penawar1 = "Djooooo";
-    String id_penawar2 = "4";
-    String penawar2 = "Jodi";
+    String id_pelelang = "1";
+    String nama_pelelang = "kelvin";
+    String key_lelang;
+
+    String gambar_lelang;
 
     String id_lelang;
     int hp;
 
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    final StorageReference storageRef = storage.getReference();
+
     ScrollView scrollView;
     Button bid_btn_bid;
     TextView tv_username, tv_namaBarang, tv_deskripsi, tv_exp, tv_highprice;
-    ImageView iv_userPhoto, iv_itemPhoto;
+    ImageView iv_itemPhoto, backbutton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +73,10 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
         tv_namaBarang = findViewById(R.id.bid_tv_namaItem);
         tv_deskripsi = findViewById(R.id.bid_tv_descItem);
         tv_exp = findViewById(R.id.bid_tv_expDate);
-        iv_userPhoto = findViewById(R.id.bid_iv_userPhoto);
         iv_itemPhoto = findViewById(R.id.bid_iv_itemPhoto);
         tv_highprice = findViewById(R.id.bid_tv_highprice);
+        backbutton = findViewById(R.id.backbutton);
+
 
         recyclerView = findViewById(R.id.bidHistory_rv_history);
         LinearLayoutManager layoutManager = new LinearLayoutManager(BidActivity.this);
@@ -76,10 +84,37 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                key_lelang = null;
+            } else {
+                key_lelang = extras.getString("key");
+                nama_pelelang = extras.getString("nama_pelelang");
+                gambar_lelang = extras.getString("foto");
+            }
+        }
+
+        StorageReference gallery = storageRef.child(""+gambar_lelang);
+        Glide.with(getApplicationContext())
+                .using(new FirebaseImageLoader())
+                .load(gallery)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(iv_itemPhoto);
+
         DatabaseReference ref = database.child("lelang");
 
         //ngambil data lelang
-        DatabaseReference lelang = ref.child("1");
+        DatabaseReference lelang = ref.child(key_lelang);
         lelang.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -92,7 +127,7 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
                 if (!dataSnapshot.child("harga_akhir").getValue().toString().equalsIgnoreCase("-")) {
                     bid_btn_bid.setEnabled(false);
                     bid_btn_bid.setBackgroundColor(getResources().getColor(R.color.grey));
-                    bid_btn_bid.setText("Lelang Telah Berakhir");
+                    bid_btn_bid.setText("Auction is Over");
                 }
 //                Log.d("id_lelang", id_lelang+"");
             }
@@ -104,15 +139,14 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
         });
 
         //ngambil data history bid
-        try{
-            DatabaseReference bid = lelang.child("bid");
-            bid.orderByChild("jumlah_bid").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+        DatabaseReference bid = lelang.child("bid");
+        bid.orderByChild("jumlah_bid").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    bidModelList.clear();
-
-                    for(DataSnapshot ds : dataSnapshot.getChildren()){
+                bidModelList.clear();
+                try {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         String id_bid = ds.getKey();
                         int jumlah_bid = Integer.parseInt(ds.child("jumlah_bid").getValue().toString());
                         String waktu_bid = ds.child("waktu_bid").getValue().toString();
@@ -120,25 +154,32 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
                         bidModelList.add(new BidModel(id_bid, nama_penawar, waktu_bid, jumlah_bid));
                     }
 
+
                     adapter = new BidHistoryAdapter(bidModelList, BidActivity.this);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                    hp = bidModelList.get(bidModelList.size()-1).getJumlah_bid();
-                    tv_highprice.setText(hp+"");
-                    if(bidDialog != null){
-                        bidDialog.update_price(hp+"");
+                    try {
+                        hp = bidModelList.get(bidModelList.size() - 1).getJumlah_bid();
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        hp = 0;
                     }
 
+                    tv_highprice.setText(hp + "");
+                    if (bidDialog != null) {
+                        bidDialog.update_price(hp + "");
+                    }
+
+                } catch (NullPointerException e) {
+                    Toast.makeText(BidActivity.this, "Data bid masih kosong", Toast.LENGTH_SHORT).show();
                 }
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
+            }
 
-                }
-            });
-        }catch (NullPointerException e){
-            Toast.makeText(this, "Data bid masih kosong", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         //btn bid dipencet
@@ -152,25 +193,25 @@ public class BidActivity extends AppCompatActivity implements BidDialog.BidDialo
 
     }
 
-    public void openBidDialog(){
-        bidDialog = new BidDialog(id_lelang, id_penawar1, penawar1, hp);
+    public void openBidDialog() {
+        bidDialog = new BidDialog(id_lelang, id_pelelang, nama_pelelang, hp);
         bidDialog.show(getSupportFragmentManager(), "Bid Dialog");
     }
 
     @Override
     public void applyTexts(String bidPrice) {
-        String key =database.push().getKey();
+        String key = database.push().getKey();
         Date today = Calendar.getInstance().getTime();
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String currentTime = formatter.format(today);
 
-        Map<String,Object> link = new HashMap<String, Object>();
-        link.put("/lelang/"+id_lelang+"/bid/"+key+"/id_penawar",id_penawar1);
-        link.put("/lelang/"+id_lelang+"/bid/"+key+"/jumlah_bid",Integer.parseInt(bidPrice));
-        link.put("/lelang/"+id_lelang+"/bid/"+key+"/nama_penawar",penawar1);
-        link.put("/lelang/"+id_lelang+"/bid/"+key+"/waktu_bid",currentTime);
+        Map<String, Object> link = new HashMap<String, Object>();
+        link.put("/lelang/" + id_lelang + "/bid/" + key + "/id_penawar", id_pelelang);
+        link.put("/lelang/" + id_lelang + "/bid/" + key + "/jumlah_bid", Integer.parseInt(bidPrice));
+        link.put("/lelang/" + id_lelang + "/bid/" + key + "/nama_penawar", nama_pelelang);
+        link.put("/lelang/" + id_lelang + "/bid/" + key + "/waktu_bid", currentTime);
 
-        Log.d("dialog",id_penawar1+" "+bidPrice+" "+penawar1+" "+currentTime);
+        Log.d("dialog", id_pelelang + " " + bidPrice + " " + nama_pelelang + " " + currentTime);
         database.updateChildren(link);
     }
 }
